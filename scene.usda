@@ -1,0 +1,164 @@
+#usda 1.0
+(
+    defaultPrim = "scene"
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "scene" (
+    kind = "group"
+)
+{
+    def "machineFlesh" (
+        prepend references = @./assets/machineFlesh/machineFlesh.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform", "xformOp:transform:xform1"]
+    }
+
+    def "ground" (
+        prepend references = @./assets/ground/ground.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform", "xformOp:transform:xform1"]
+    }
+
+    def "grassField" (
+        prepend references = @./assets/setdressing/grassField.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    def "milkBottles" (
+        prepend references = @./assets/setdressing/milkBottleGroup.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    def "fence1" (
+        prepend references = @./assets/fence/fence.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (0.9711011716873832, -0.011614636363919207, 0.23838543279639676, 0), (0.06366033175376729, 0.9752341919752694, -0.21181509144379576, 0), (-0.2300214696683589, 0.22086957921922432, 0.947790458100909, 0), (77.33381290186071, 6.463063362309867, -208.1530321645891, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform", "xformOp:transform:xform1"]
+    }
+
+    def "fence2" (
+        prepend references = @./assets/fence/fence.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (0.582692338119376, -0.010188288233881902, -0.8126289669214593, 0), (-0.026639438151426678, 0.9991446258720967, -0.03162841959194455, 0), (0.8122561045827548, 0.04007761686741282, 0.5819225078945458, 0), (-166.04621505737305, 11.648246765136719, -27.047243118286133, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform", "xformOp:transform:xform1"]
+    }
+
+    def "tree_a1" (
+        instanceable = true
+        prepend references = @./assets/tree/tree.usda@</__root>
+        variants = {
+            string type = "tree_a"
+        }
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (-0.617570508015384, 0.04101898788367934, 0.4235848324274832, 0), (0.05854591255970186, 0.7475990668816986, 0.012961918074318476, 0), (-0.4215199209434498, 0.04373874518790139, -0.6187955061385108, 0), (-194.79767822265626, -6.143708010253903, -671.9555126953124, 1) )
+        uniform token[] xformOpOrder = ["xformOp:scale", "xformOp:transform", "xformOp:transform:xform1"]
+    }
+
+    def "tree_a2" (
+        instanceable = true
+        prepend references = @./assets/tree/tree.usda@</__root>
+        variants = {
+            string type = "tree_a"
+        }
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (0.6033299806171075, 0, -0.6678270243772415, 0), (0, 0.9, 0, 0), (0.6678270243772415, 0, 0.6033299806171075, 0), (-684.7280696882929, 0, -88.45714569914375, 1) )
+        uniform token[] xformOpOrder = ["xformOp:scale", "xformOp:transform", "xformOp:transform:xform1"]
+    }
+
+    def "tree_a3" (
+        instanceable = true
+        prepend references = @./assets/tree/tree.usda@</__root>
+        variants = {
+            string type = "tree_a"
+        }
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (-0.3896452329867891, 0, -0.5202658862645819, 0), (0, 0.65, 0, 0), (0.5202658862645819, 0, -0.3896452329867891, 0), (-456.3392389724165, -6.425239562988281, 129.92602775865407, 1) )
+        uniform token[] xformOpOrder = ["xformOp:scale", "xformOp:transform", "xformOp:transform:xform1"]
+    }
+
+    def "tree_b1" (
+        instanceable = true
+        prepend references = @./assets/tree/tree.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (0.6450128402127645, 0, 0.2719530032205245, 0), (0, 0.7, 0, 0), (-0.2719530032205245, 0, 0.6450128402127645, 0), (-475.0452549308927, 0, 138.68962760299917, 1) )
+        uniform token[] xformOpOrder = ["xformOp:scale", "xformOp:transform", "xformOp:transform:xform1"]
+    }
+
+    def "tree_b2" (
+        instanceable = true
+        prepend references = @./assets/tree/tree.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (-0.7381391805456543, 0, -0.13285537303169206, 0), (0, 0.75, -0, 0), (0.13285537303169206, 0, -0.7381391805456543, 0), (-582.3339422460808, 0, -70.32235045741862, 1) )
+        uniform token[] xformOpOrder = ["xformOp:scale", "xformOp:transform", "xformOp:transform:xform1"]
+    }
+
+    def "tree_b3" (
+        instanceable = true
+        prepend references = @./assets/tree/tree.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (0.24792286727629273, 0, 0.813040129318044, 0), (0, 0.85, 0, 0), (-0.813040129318044, 0, 0.24792286727629273, 0), (-276.2490759314941, -33.59136199951172, 163.41964465103172, 1) )
+        uniform token[] xformOpOrder = ["xformOp:scale", "xformOp:transform", "xformOp:transform:xform1"]
+    }
+}
+
+def Xform "cameras"
+{
+    def Camera "RENDERCAM" (
+        prepend apiSchemas = ["HoudiniViewportGuideAPI", "HoudiniCameraPlateAPI"]
+    )
+    {
+        float2 clippingRange = (1, 1000000)
+        float exposure = 0
+        float focalLength = 0.35
+        float focusDistance = 5
+        float fStop = 0
+        float horizontalAperture = 0.35
+        float horizontalApertureOffset = 0
+        asset houdini:backgroundimage = @@
+        asset houdini:foregroundimage = @@
+        float houdini:guidescale = 1
+        bool houdini:inviewermenu = 1
+        token projection = "perspective"
+        double shutter:close = 0.25
+        double shutter:open = -0.25
+        float verticalAperture = 0.196875
+        float verticalApertureOffset = 0
+        matrix4d xformOp:transform = ( (0.6427876096865394, 0, -0.766044443118978, 0), (0.09335733330207169, 0.992546151641322, 0.07833610394146276, 0), (0.7603344640039612, -0.12186934340514748, 0.6379963683170988, 0), (365, 43, 355, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+}
+
