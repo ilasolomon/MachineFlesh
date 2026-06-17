@@ -1,0 +1,100 @@
+#usda 1.0
+(
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+over "__root"
+{
+    def Scope "mtl"
+    {
+        def Material "usdpreviewmaterial" (
+            prepend inherits = </__class_mtl__/usdpreviewmaterial>
+        )
+        {
+            token outputs:surface.connect = </__root/mtl/usdpreviewmaterial/usdpreviewsurface.outputs:surface>
+
+            def Shader "usdpreviewsurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.6667, 0.6667, 0.6667)
+                color3f inputs:diffuseColor.connect = </__root/mtl/usdpreviewmaterial/usduvtexture2.outputs:rgb>
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "usduvtexture2"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (0, 0.5, 1, 1)
+                asset inputs:file = @./components/tex/2k/png/color_1001.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </__root/mtl/usdpreviewmaterial/usdprimvarreader1.outputs:result>
+                vector3f outputs:rgb
+            }
+
+            def Shader "usdprimvarreader1"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+        }
+
+        def Material "skydome_mtlx" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+            prepend inherits = </__class_mtl__/skydome_mtlx>
+        )
+        {
+            string config:mtlx:version = "1.39"
+            token outputs:mtlx:surface.connect = </__root/mtl/skydome_mtlx/mtlxsurface1.outputs:out>
+
+            def Shader "mtlxsurface1"
+            {
+                uniform token info:id = "ND_surface"
+                string inputs:bsdf.connect = </__root/mtl/skydome_mtlx/mtlxoren_nayar_diffuse_bsdf1.outputs:out>
+                token outputs:out
+            }
+
+            def Shader "mtlxoren_nayar_diffuse_bsdf1"
+            {
+                uniform token info:id = "ND_oren_nayar_diffuse_bsdf"
+                color3f inputs:color.connect = </__root/mtl/skydome_mtlx/color_tx.outputs:out>
+                token outputs:out
+            }
+
+            def Shader "color_tx"
+            {
+                uniform token info:id = "ND_image_color3"
+                color3f inputs:default = (0, 0.5, 1)
+                asset inputs:file = @./components/tex/2k/png/color_1001.png@ (
+                    colorSpace = "ACEScg"
+                )
+                float2 inputs:texcoord.connect = </__root/mtl/skydome_mtlx/mtlxtexcoord1.outputs:out>
+                color3f outputs:out
+            }
+
+            def Shader "mtlxtexcoord1"
+            {
+                uniform token info:id = "ND_texcoord_vector2"
+                float2 outputs:out
+            }
+        }
+    }
+
+    over "geo"
+    {
+        over "mesh" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:full = </__root/mtl/skydome_mtlx>
+            rel material:binding:preview = </__root/mtl/usdpreviewmaterial>
+        }
+    }
+}
+

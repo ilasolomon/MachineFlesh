@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "__root" (
+    variants = {
+        string type = "tree_b"
+    }
+    prepend variantSets = "type"
+)
+{
+    variantSet "type" = {
+        "tree_a" (
+            kind = "component"
+            prepend references = @./components/geo_a.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+        }
+        "tree_b" (
+            kind = "component"
+            prepend references = @./components/geo_b.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:scale", "xformOp:transform"]
+
+        }
+    }
+}
+

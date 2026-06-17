@@ -1,0 +1,173 @@
+#usda 1.0
+(
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+over "__root"
+{
+    def Scope "mtl"
+    {
+        def Material "usdpreviewmaterial" (
+            prepend inherits = </__class_mtl__/usdpreviewmaterial>
+        )
+        {
+            token outputs:surface.connect = </__root/mtl/usdpreviewmaterial/usdpreviewsurface.outputs:surface>
+
+            def Shader "usdpreviewsurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.6667, 0.6667, 0.6667)
+                token outputs:surface
+            }
+        }
+
+        def Material "fence_mtlx" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+            prepend inherits = </__class_mtl__/fence_mtlx>
+        )
+        {
+            string config:mtlx:version = "1.39"
+            token outputs:mtlx:surface.connect = </__root/mtl/fence_mtlx/mtlxstandard_surface.outputs:out>
+            token outputs:surface.connect = </__root/mtl/fence_mtlx/mtlxstandard_preview.outputs:surface>
+
+            def Shader "mtlxstandard_surface"
+            {
+                uniform token info:id = "ND_standard_surface_surfaceshader"
+                float inputs:base (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 1
+                            string ogl_diff_intensity = "1"
+                        }
+                    }
+                )
+                float inputs:base.connect = </__root/mtl/fence_mtlx/mtlxunifiednoise2d1.outputs:out>
+                color3f inputs:base_color = (0.42016134, 0.262, 0.19916132) (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double3 default_value = (0.8, 0.8, 0.8)
+                            string ogl_diff = "1"
+                        }
+                    }
+                )
+                float inputs:coat (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0
+                            string ogl_coat_intensity = "1"
+                        }
+                    }
+                )
+                float inputs:coat_roughness (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0.1
+                            string ogl_coat_rough = "1"
+                        }
+                    }
+                )
+                float inputs:emission (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0
+                            string ogl_emit_intensity = "1"
+                        }
+                    }
+                )
+                color3f inputs:emission_color (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double3 default_value = (1, 1, 1)
+                            string ogl_emit = "1"
+                        }
+                    }
+                )
+                float inputs:metalness (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0
+                            string ogl_metallic = "1"
+                        }
+                    }
+                )
+                float inputs:specular (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 1
+                            string ogl_spec_intensity = "1"
+                        }
+                    }
+                )
+                color3f inputs:specular_color (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double3 default_value = (1, 1, 1)
+                            string ogl_spec = "1"
+                        }
+                    }
+                )
+                float inputs:specular_IOR (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 1.5
+                            string ogl_ior = "1"
+                        }
+                    }
+                )
+                float inputs:specular_roughness = 0.7 (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0.2
+                            string ogl_rough = "1"
+                        }
+                    }
+                )
+                float inputs:transmission (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0
+                            string ogl_transparency = "1"
+                        }
+                    }
+                )
+                token outputs:out
+            }
+
+            def Shader "mtlxunifiednoise2d1"
+            {
+                uniform token info:id = "ND_unifiednoise2d_float"
+                float2 inputs:freq = (10, 100)
+                float inputs:outmin = 0.33
+                float outputs:out
+            }
+
+            def Shader "mtlxstandard_preview" (
+                customData = {
+                    bool HoudiniIsAutoCreatedShader = 1
+                }
+            )
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoatRoughness = 0.1
+                color3f inputs:diffuseColor = (0.42016134, 0.262, 0.19916132)
+                float inputs:roughness = 0.7
+                color3f inputs:specularColor = (1, 1, 1)
+                token outputs:surface
+            }
+        }
+    }
+
+    over "geo" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding:full = </__root/mtl/fence_mtlx>
+        rel material:binding:preview = </__root/mtl/usdpreviewmaterial>
+    }
+}
+

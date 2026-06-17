@@ -1,0 +1,675 @@
+#usda 1.0
+(
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def "__root" (
+    kind = "component"
+    prepend references = @./components/geo.usd@
+    variants = {
+        string cluster = "cluster_j"
+    }
+    prepend variantSets = "cluster"
+)
+{
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+    variantSet "cluster" = {
+        "cluster_a" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_b" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_c" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_d" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_e" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_f" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_g" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_h" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_i" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_j" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+        "cluster_b" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_a" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_c" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_d" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_e" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_f" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_g" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_h" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_i" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_j" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+        "cluster_c" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_a" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_b" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_d" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_e" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_f" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_g" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_h" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_i" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_j" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+        "cluster_d" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_a" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_b" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_c" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_e" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_f" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_g" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_h" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_i" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_j" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+        "cluster_e" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_a" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_b" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_c" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_d" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_f" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_g" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_h" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_i" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_j" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+        "cluster_f" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_a" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_b" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_c" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_d" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_e" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_g" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_h" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_i" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_j" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+        "cluster_g" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_a" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_b" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_c" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_d" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_e" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_f" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_h" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_i" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_j" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+        "cluster_h" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_a" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_b" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_c" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_d" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_e" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_f" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_g" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_i" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_j" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+        "cluster_i" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_a" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_b" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_c" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_d" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_e" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_f" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_g" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_h" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_j" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+        "cluster_j" (
+            kind = "component"
+            prepend references = @./components/geo.usd@
+        ) {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            over "geo"
+            {
+                over "cluster_a" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_b" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_c" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_d" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_e" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_f" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_g" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_h" (
+                    active = false
+                )
+                {
+                }
+
+                over "cluster_i" (
+                    active = false
+                )
+                {
+                }
+            }
+
+        }
+    }
+}
+

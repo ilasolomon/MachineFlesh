@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def "__root" (
+    kind = "component"
+    prepend references = @./components/geo.usd@
+)
+{
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+
+    over "geo"
+    {
+        over "milkBottle"
+        {
+            over "bottle"
+            {
+                float3[] extent = [(-6.412964, -0.0014724731, -6.423584), (6.401367, 27.950333, 6.3945312)]
+                token subdivisionScheme = "catmullClark"
+            }
+
+            over "milk"
+            {
+                float3[] extent = [(-6.0667076, 0.64108753, -6.07016), (6.061596, 23.598068, 6.0581055)]
+                token subdivisionScheme = "catmullClark"
+            }
+        }
+    }
+}
+
