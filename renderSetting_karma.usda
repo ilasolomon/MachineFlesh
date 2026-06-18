@@ -2,7 +2,7 @@
 (
     endTimeCode = 1
     framesPerSecond = 24
-    metersPerUnit = 1
+    metersPerUnit = 0.01
     renderSettingsPrimPath = "/Render/rendersettings"
     startTimeCode = 1
     timeCodesPerSecond = 24
@@ -43,7 +43,7 @@ def Scope "Render"
         bool karma:global:guiding_enable = 0
         int karma:global:guiding_samples = 0
         bool karma:global:image_blur = 1
-        string karma:global:imagefilter = "[]"
+        string karma:global:imagefilter = '[["denoise", {"engine": "oidn", "use_albedo_input": true, "use_n_input": true, "forcecpu": false, "aovs": ["C", "AO", "beautyunshadowed", "combineddiffuse", "combinedglossyreflection", "indirectdiffuse", "indirectemission", "indirectglossyreflection", "sss", "directglossyreflection"]}]]'
         token karma:global:imagemode = "Progressive"
         token karma:global:light_sampling_mode = "Light Tree"
         float karma:global:light_sampling_quality = 1
@@ -520,7 +520,7 @@ def Scope "Render"
                 </Render/Products/Vars/CryptoObject>,
                 </Render/Products/Vars/CryptoMaterial>,
             ]
-            token productName = "S:/Projects/MachineFlesh_RM/USD_portable/RENDER.exr"
+            token productName = "S:/Projects/MachineFlesh_RM/USD_portable/RENDER2.exr"
             uniform token productType = "raster"
         }
     }

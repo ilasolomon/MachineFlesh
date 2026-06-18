@@ -1,8 +1,9 @@
 #usda 1.0
 (
+    defaultPrim = "__root"
     endTimeCode = 1
     framesPerSecond = 24
-    metersPerUnit = 1
+    metersPerUnit = 0.01
     startTimeCode = 1
     timeCodesPerSecond = 24
     upAxis = "Y"
@@ -381,7 +382,7 @@ over "__root"
             {
                 uniform token info:id = "ND_image_color3"
                 asset inputs:file = @./components/tex/eye/color_1001.png@ (
-                    colorSpace = "Raw"
+                    colorSpace = "ACEScg"
                 )
                 float2 inputs:texcoord.connect = </__root/mtl/eye_mtlx/mtlxtexcoord1.outputs:out>
                 color3f outputs:out
@@ -614,7 +615,7 @@ over "__root"
             {
                 uniform token info:id = "ND_image_color3"
                 asset inputs:file = @./components/tex/1k/png/color_<UDIM>.png@ (
-                    colorSpace = "Raw"
+                    colorSpace = "ACEScg"
                 )
                 float2 inputs:texcoord.connect = </__root/mtl/fur_mtlx/mtlxtexcoord1.outputs:out>
                 color3f outputs:out

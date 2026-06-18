@@ -1,8 +1,9 @@
 #usda 1.0
 (
+    defaultPrim = "__root"
     endTimeCode = 1
     framesPerSecond = 24
-    metersPerUnit = 1
+    metersPerUnit = 0.01
     startTimeCode = 1
     timeCodesPerSecond = 24
     upAxis = "Y"
@@ -59,7 +60,7 @@ def Xform "__root" (
         )
         {
             def "milkBottle" (
-                prepend references = @../milkBottle/milkBottle.usda@</__root>
+                prepend references = @../milkBottle/milkBottle.usda@
             )
             {
             }

@@ -2,7 +2,7 @@
 (
     endTimeCode = 1
     framesPerSecond = 24
-    metersPerUnit = 1
+    metersPerUnit = 0.01
     startTimeCode = 1
     timeCodesPerSecond = 24
     upAxis = "Y"
