@@ -14,7 +14,7 @@ def Xform "scene" (
 )
 {
     def "machineFlesh" (
-        prepend references = @./assets/machineFlesh/machineFlesh.usda@</__root>
+        prepend references = @./assets/machineFlesh/machineFlesh.usda@
     )
     {
         matrix4d xformOp:transform
@@ -23,7 +23,7 @@ def Xform "scene" (
     }
 
     def "ground" (
-        prepend references = @./assets/ground/ground.usda@</__root>
+        prepend references = @./assets/ground/ground.usda@
     )
     {
         matrix4d xformOp:transform
@@ -32,7 +32,7 @@ def Xform "scene" (
     }
 
     def "grassField" (
-        prepend references = @./assets/setdressing/grassField.usda@</__root>
+        prepend references = @./assets/setdressing/grassField.usda@
     )
     {
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
@@ -40,7 +40,7 @@ def Xform "scene" (
     }
 
     def "milkBottles" (
-        prepend references = @./assets/setdressing/milkBottleGroup.usda@</__root>
+        prepend references = @./assets/setdressing/milkBottleGroup.usda@
     )
     {
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
@@ -48,7 +48,7 @@ def Xform "scene" (
     }
 
     def "fence1" (
-        prepend references = @./assets/fence/fence.usda@</__root>
+        prepend references = @./assets/fence/fence.usda@
     )
     {
         matrix4d xformOp:transform
@@ -57,7 +57,7 @@ def Xform "scene" (
     }
 
     def "fence2" (
-        prepend references = @./assets/fence/fence.usda@</__root>
+        prepend references = @./assets/fence/fence.usda@
     )
     {
         matrix4d xformOp:transform
@@ -67,7 +67,7 @@ def Xform "scene" (
 
     def "tree_a1" (
         instanceable = true
-        prepend references = @./assets/tree/tree.usda@</__root>
+        prepend references = @./assets/tree/tree.usda@
         variants = {
             string type = "tree_a"
         }
@@ -80,7 +80,7 @@ def Xform "scene" (
 
     def "tree_a2" (
         instanceable = true
-        prepend references = @./assets/tree/tree.usda@</__root>
+        prepend references = @./assets/tree/tree.usda@
         variants = {
             string type = "tree_a"
         }
@@ -93,7 +93,7 @@ def Xform "scene" (
 
     def "tree_a3" (
         instanceable = true
-        prepend references = @./assets/tree/tree.usda@</__root>
+        prepend references = @./assets/tree/tree.usda@
         variants = {
             string type = "tree_a"
         }
@@ -106,7 +106,7 @@ def Xform "scene" (
 
     def "tree_b1" (
         instanceable = true
-        prepend references = @./assets/tree/tree.usda@</__root>
+        prepend references = @./assets/tree/tree.usda@
     )
     {
         matrix4d xformOp:transform
@@ -116,7 +116,7 @@ def Xform "scene" (
 
     def "tree_b2" (
         instanceable = true
-        prepend references = @./assets/tree/tree.usda@</__root>
+        prepend references = @./assets/tree/tree.usda@
     )
     {
         matrix4d xformOp:transform
@@ -126,7 +126,7 @@ def Xform "scene" (
 
     def "tree_b3" (
         instanceable = true
-        prepend references = @./assets/tree/tree.usda@</__root>
+        prepend references = @./assets/tree/tree.usda@
     )
     {
         matrix4d xformOp:transform
@@ -135,7 +135,8 @@ def Xform "scene" (
     }
 
     def "skydome" (
-        prepend references = @./assets/skydome/skydome.usda@</__root>
+        active = false
+        prepend references = @./assets/skydome/skydome.usda@
     )
     {
         matrix4d xformOp:transform
