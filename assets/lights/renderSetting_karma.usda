@@ -1,0 +1,172 @@
+#usda 1.0
+(
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 0.01
+    renderSettingsPrimPath = "/Render/rendersettings"
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Scope "Render"
+{
+    def RenderSettings "rendersettings" (
+        prepend apiSchemas = ["KarmaRenderSettingsAPI"]
+    )
+    {
+        uniform token aspectRatioConformPolicy = "expandAperture"
+        rel camera = </cameras/RENDERCAM>
+        uniform float4 dataWindowNDC = (0, 0, 1, 1)
+        bool disableDepthOfField = 0
+        uniform bool disableMotionBlur = 1
+        custom string husk:default_delegate = "BRAY_HdKarma"
+        token[] includedPurposes = ["default", "render"]
+        bool karma:global:abortmissingtexture = 0
+        bool karma:global:abortnogpudevice = 0
+        bool karma:global:autoraybias = 1
+        token karma:global:bucketorder = "Middle"
+        int karma:global:bucketsize = 32
+        float karma:global:cacheratio = 0.25
+        int karma:global:cachesize = 1000
+        float karma:global:colorlimit = 20
+        float karma:global:colorlimitindirect = 20
+        bool karma:global:colorlimitindlinked = 1
+        bool karma:global:constrainmaxrough = 1
+        token karma:global:convergence_mode = "Variance"
+        bool karma:global:dcm_usehitdist = 0
+        string karma:global:dicingcamera = ""
+        float karma:global:dicingqualityscale = 1
+        string karma:global:diffusecomponents = "diffuse"
+        custom bool karma:global:enable_dof = 1
+        string karma:global:exportcomponents = "diffuse reflect coat refract volume sss"
+        bool karma:global:guiding_enable = 0
+        int karma:global:guiding_samples = 0
+        bool karma:global:image_blur = 1
+        string karma:global:imagefilter = '[["denoise", {"engine": "oidn", "use_albedo_input": true, "use_n_input": true, "forcecpu": false, "aovs": ["C"]}]]'
+        token karma:global:imagemode = "Progressive"
+        token karma:global:light_sampling_mode = "Light Tree"
+        float karma:global:light_sampling_quality = 1
+        float karma:global:offscreenquality = 0.1
+        bool karma:global:outline_apply = 1
+        float3 karma:global:outline_color = (1, 0, 1)
+        bool karma:global:outline_debug = 0
+        float karma:global:outline_depthblend = 0
+        float karma:global:outline_depththreshold = 1
+        bool karma:global:outline_enable = 0
+        float karma:global:outline_fitmax = 1
+        float karma:global:outline_fitmin = 0
+        float karma:global:outline_intensity = 1
+        bool karma:global:outline_linesaovs = 0
+        bool karma:global:outline_mode = 0
+        bool karma:global:outline_primary = 1
+        int karma:global:outline_primary_samples = 4
+        int karma:global:outline_primary_stencils = 1
+        float karma:global:outline_radius = 1
+        bool karma:global:outline_secondary = 1
+        int karma:global:outline_secondary_samples = 4
+        int karma:global:outline_secondary_stencils = 1
+        int karma:global:pathtracedsamples = 128
+        string karma:global:pixelfilter = "gauss"
+        float karma:global:pixelfiltersize = 2
+        string karma:global:pixeloracle = '["variance", {"minrays": -1, "plane": "C", "variance": 0.01, "ociomode": 0, "ociodisplay": "sRGB - Display", "ocioview": "", "ociocolorspace": "default"}]'
+        float karma:global:raybias = 0.001
+        string karma:global:refractcomponents = "refract"
+        int karma:global:russianroulette_cutoff = 2
+        int karma:global:samplesperpixel = 8
+        int karma:global:screendoorlimit = 4
+        string karma:global:ssscomponents = "sss"
+        bool karma:global:usecacheratio = 1
+        string karma:global:volumecomponents = "volume"
+        custom token karma:object:blurstyle = "Rotation Blur"
+        custom bool karma:object:causticsenable = 0
+        custom float karma:object:causticsroughnessclamp = 0.2
+        custom token karma:object:cull_backface = "Off"
+        custom int karma:object:curve_basis = 0
+        custom token karma:object:curve_style = "Rounded Curves"
+        custom float karma:object:diffuselimit = 1
+        custom float karma:object:diffusequality = 1
+        custom int karma:object:geosamples = 2
+        custom int karma:object:instance_samples = 2
+        custom token karma:object:instance_vblur = "No Velocity Blur"
+        custom bool karma:object:mblur = 1
+        custom token karma:object:point_style = "Spheres"
+        custom float karma:object:reflectlimit = 4
+        custom float karma:object:reflectquality = 1
+        custom float karma:object:refractlimit = 4
+        custom float karma:object:refractquality = 1
+        custom bool karma:object:samplesfromstage = 1
+        custom float karma:object:ssslimit = 1
+        custom float karma:object:sssquality = 1
+        custom int karma:object:varianceaa_maxsamples = 9
+        custom int karma:object:varianceaa_minsamples = 1
+        custom float karma:object:varianceaa_thresh = 0.01
+        custom token karma:object:vblur = "No Velocity Blur"
+        custom float karma:object:volumelimit = 0
+        custom float karma:object:volumequality = 1
+        custom float karma:object:volumesteprate = 0.25
+        custom float karma:object:volumevblurscale = 1
+        custom int karma:object:xformsamples = 2
+        token[] materialBindingPurposes = ["full", "allPurpose"]
+        uniform float pixelAspectRatio = 1
+        rel products = </Render/Products/renderproduct>
+        uniform int2 resolution = (720, 1080)
+    }
+
+    def Scope "Products"
+    {
+        def Scope "Vars"
+        {
+            def RenderVar "beauty" (
+                prepend apiSchemas = ["KarmaRenderVarAPI", "HuskRenderVarAPI"]
+            )
+            {
+                uniform token dataType = "color4f"
+                float driver:parameters:aov:husk:clearValue = 0
+                token driver:parameters:aov:husk:format = "color4h"
+                bool driver:parameters:aov:husk:multiSampled = 1
+                string driver:parameters:aov:husk:name = "C"
+                string driver:parameters:aov:karma:filter = '["ubox",{}]'
+                uniform string sourceName = "C.*[LO]"
+                uniform token sourceType = "lpe"
+            }
+
+            def RenderVar "CryptoMaterial" (
+                prepend apiSchemas = ["KarmaRenderVarAPI", "HuskRenderVarAPI"]
+            )
+            {
+                uniform token dataType = "float3"
+                string driver:parameters:aov:husk:channel_prefix = "CryptoMaterial"
+                float driver:parameters:aov:husk:clearValue = 0
+                token driver:parameters:aov:husk:format = "float3"
+                bool driver:parameters:aov:husk:multiSampled = 0
+                string driver:parameters:aov:husk:name = "CryptoMaterial"
+                bool driver:parameters:aov:karma:cryptomatte = 1
+                int driver:parameters:aov:karma:cryptomatterank = 6
+                string driver:parameters:aov:karma:cryptomattesidecar = ""
+                string driver:parameters:aov:karma:filter = '["ubox",{}]'
+                string driver:parameters:aov:karma:utilitypathexpression = "CO"
+                uniform string sourceName = "__materialname"
+                uniform token sourceType = "primvar"
+            }
+        }
+
+        def RenderProduct "renderproduct" (
+            prepend apiSchemas = ["HuskRenderProductAPI"]
+        )
+        {
+            string driver:parameters:husk:artist = "Ila Soleimani - 2026"
+            string driver:parameters:husk:comment = ""
+            string driver:parameters:husk:hostname = ""
+            string driver:parameters:husk:OpenEXR:compression = "zips"
+            int driver:parameters:husk:OpenEXR:dwa_compression = 85
+            rel orderedVars = [
+                </Render/Products/Vars/beauty>,
+                </Render/Products/Vars/CryptoMaterial>,
+            ]
+            token productName = "S:/Projects/MachineFlesh_RM/USD_portable/RENDER3.exr"
+            uniform token productType = "raster"
+        }
+    }
+}
+

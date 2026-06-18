@@ -1,0 +1,15 @@
+#usda 1.0
+(
+    defaultPrim = "scene"
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 0.01
+    startTimeCode = 1
+    subLayers = [
+        @./assets/lights/lightingScenario1.usda@,
+        @./scene.usda@
+    ]
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+

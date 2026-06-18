@@ -20,11 +20,11 @@ def Xform "lights"
         color3f inputs:color = (1, 0.9275, 0.9)
         float inputs:diffuse = 1
         bool inputs:enableColorTemperature = 0
-        float inputs:exposure = -0.1
+        float inputs:exposure = 1
         float inputs:intensity = 1
         bool inputs:normalize = 0
         float inputs:specular = 1
-        asset inputs:texture:file = @./assets/images/hdri/studio_white_soft_light_05.exr@
+        asset inputs:texture:file = @../images/hdri/studio_white_soft_light_05.exr@
         token inputs:texture:format = "latlong"
         rel light:filters = None
         token poleAxis = "scene"
