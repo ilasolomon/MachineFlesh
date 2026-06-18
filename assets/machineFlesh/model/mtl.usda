@@ -176,22 +176,22 @@ over "__root"
 
             def Shader "metal_tx"
             {
-                uniform token info:id = "ND_image_vector3"
+                uniform token info:id = "ND_image_color3"
                 asset inputs:file = @./components/tex/1k/png/metal_<UDIM>.png@ (
                     colorSpace = "Raw"
                 )
                 float2 inputs:texcoord.connect = </__root/mtl/mf_mtlx/mtlxtexcoord1.outputs:out>
-                vector3f outputs:out
+                color3f outputs:out
             }
 
             def Shader "rough_tx"
             {
-                uniform token info:id = "ND_image_vector3"
+                uniform token info:id = "ND_image_color3"
                 asset inputs:file = @./components/tex/1k/png/rough_<UDIM>.png@ (
                     colorSpace = "Raw"
                 )
                 float2 inputs:texcoord.connect = </__root/mtl/mf_mtlx/mtlxtexcoord1.outputs:out>
-                vector3f outputs:out
+                color3f outputs:out
             }
 
             def Shader "mtlxnormalmap1"
@@ -396,12 +396,12 @@ over "__root"
 
             def Shader "rough_tx"
             {
-                uniform token info:id = "ND_image_vector3"
+                uniform token info:id = "ND_image_color3"
                 asset inputs:file = @./components/tex/eye/rough_1001.png@ (
                     colorSpace = "Raw"
                 )
                 float2 inputs:texcoord.connect = </__root/mtl/eye_mtlx/mtlxtexcoord1.outputs:out>
-                vector3f outputs:out
+                color3f outputs:out
             }
 
             def Shader "mtlxnormalmap1"
@@ -480,22 +480,125 @@ over "__root"
         )
         {
             string config:mtlx:version = "1.39"
-            token outputs:mtlx:surface.connect = </__root/mtl/cornea_mtlx/mtlxsurface1.outputs:out>
+            token outputs:mtlx:surface.connect = </__root/mtl/cornea_mtlx/mtlxstandard_surface1.outputs:out>
+            token outputs:surface.connect = </__root/mtl/cornea_mtlx/mtlxstandard_surface1_preview.outputs:surface>
 
-            def Shader "mtlxsurface1"
+            def Shader "mtlxstandard_surface1"
             {
-                uniform token info:id = "ND_surface"
-                string inputs:bsdf.connect = </__root/mtl/cornea_mtlx/mtlxdielectric_bsdf1.outputs:out>
+                uniform token info:id = "ND_standard_surface_surfaceshader"
+                float inputs:base (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 1
+                            string ogl_diff_intensity = "1"
+                        }
+                    }
+                )
+                color3f inputs:base_color = (1, 1, 1) (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double3 default_value = (0.8, 0.8, 0.8)
+                            string ogl_diff = "1"
+                        }
+                    }
+                )
+                float inputs:coat (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0
+                            string ogl_coat_intensity = "1"
+                        }
+                    }
+                )
+                float inputs:coat_roughness (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0.1
+                            string ogl_coat_rough = "1"
+                        }
+                    }
+                )
+                float inputs:emission (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0
+                            string ogl_emit_intensity = "1"
+                        }
+                    }
+                )
+                color3f inputs:emission_color (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double3 default_value = (1, 1, 1)
+                            string ogl_emit = "1"
+                        }
+                    }
+                )
+                float inputs:metalness (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0
+                            string ogl_metallic = "1"
+                        }
+                    }
+                )
+                float inputs:specular (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 1
+                            string ogl_spec_intensity = "1"
+                        }
+                    }
+                )
+                color3f inputs:specular_color (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double3 default_value = (1, 1, 1)
+                            string ogl_spec = "1"
+                        }
+                    }
+                )
+                float inputs:specular_IOR = 1.35 (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 1.5
+                            string ogl_ior = "1"
+                        }
+                    }
+                )
+                float inputs:specular_roughness = 0.02 (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0.2
+                            string ogl_rough = "1"
+                        }
+                    }
+                )
+                float inputs:transmission = 1 (
+                    customData = {
+                        dictionary HoudiniPreviewTags = {
+                            double default_value = 0
+                            string ogl_transparency = "1"
+                        }
+                    }
+                )
                 token outputs:out
             }
 
-            def Shader "mtlxdielectric_bsdf1"
+            def Shader "mtlxstandard_surface1_preview" (
+                customData = {
+                    bool HoudiniIsAutoCreatedShader = 1
+                }
+            )
             {
-                uniform token info:id = "ND_dielectric_bsdf"
-                float inputs:ior = 1.65
-                float2 inputs:roughness = (0.02, 0.02)
-                string inputs:scatter_mode = "RT"
-                token outputs:out
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoatRoughness = 0.1
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:ior = 1.35
+                float inputs:opacity = 0
+                float inputs:roughness = 0.02
+                color3f inputs:specularColor = (1, 1, 1)
+                token outputs:surface
             }
         }
 
@@ -737,17 +840,17 @@ over "__root"
 
             def Shader "mtlxmultiply1"
             {
-                uniform token info:id = "ND_multiply_color3FA"
-                color3f inputs:in1.connect = </__root/mtl/smoke_mtlx/mtlxconstant1.outputs:out>
+                uniform token info:id = "ND_multiply_vector3FA"
+                vector3f inputs:in1.connect = </__root/mtl/smoke_mtlx/mtlxconstant1.outputs:out>
                 float inputs:in2.connect = </__root/mtl/smoke_mtlx/mtlxpower1.outputs:out>
-                color3f outputs:out
+                vector3f outputs:out
             }
 
             def Shader "mtlxconstant1"
             {
-                uniform token info:id = "ND_constant_color3"
-                color3f inputs:value = (0.6, 0.5, 0.3)
-                color3f outputs:out
+                uniform token info:id = "ND_constant_vector3"
+                vector3f inputs:value = (0.6, 0.5, 0.3)
+                vector3f outputs:out
             }
 
             def Shader "mtlxpower1"
@@ -767,17 +870,10 @@ over "__root"
 
             def Shader "mtlxmultiply2"
             {
-                uniform token info:id = "ND_multiply_color3FA"
-                color3f inputs:in1.connect = </__root/mtl/smoke_mtlx/mtlxconstant2.outputs:out>
+                uniform token info:id = "ND_multiply_vector3FA"
+                vector3f inputs:in1.connect = </__root/mtl/smoke_mtlx/mtlxconstant1.outputs:out>
                 float inputs:in2.connect = </__root/mtl/smoke_mtlx/mtlxpower1.outputs:out>
-                color3f outputs:out
-            }
-
-            def Shader "mtlxconstant2"
-            {
-                uniform token info:id = "ND_constant_color3"
-                color3f inputs:value = (0.6, 0.5, 0.3)
-                color3f outputs:out
+                vector3f outputs:out
             }
         }
     }

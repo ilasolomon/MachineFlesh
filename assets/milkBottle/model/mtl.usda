@@ -241,12 +241,12 @@ over "__root"
 
             def Shader "height_tx"
             {
-                uniform token info:id = "ND_image_vector3"
+                uniform token info:id = "ND_image_color3"
                 asset inputs:file = @./components/tex/2k/png/height_1001.png@ (
                     colorSpace = "Raw"
                 )
                 float2 inputs:texcoord.connect = </__root/mtl/bottle_mtlx/mtlxtexcoord1.outputs:out>
-                vector3f outputs:out
+                color3f outputs:out
             }
 
             def Shader "mtlxstandard_preview" (
