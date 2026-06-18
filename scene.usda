@@ -3,7 +3,7 @@
     defaultPrim = "scene"
     endTimeCode = 1
     framesPerSecond = 24
-    metersPerUnit = 1
+    metersPerUnit = 0.01
     startTimeCode = 1
     timeCodesPerSecond = 24
     upAxis = "Y"
@@ -133,6 +133,15 @@ def Xform "scene" (
         matrix4d xformOp:transform:xform1 = ( (0.24792286727629273, 0, 0.813040129318044, 0), (0, 0.85, 0, 0), (-0.813040129318044, 0, 0.24792286727629273, 0), (-276.2490759314941, -33.59136199951172, 163.41964465103172, 1) )
         uniform token[] xformOpOrder = ["xformOp:scale", "xformOp:transform", "xformOp:transform:xform1"]
     }
+
+    def "skydome" (
+        prepend references = @./assets/skydome/skydome.usda@</__root>
+    )
+    {
+        matrix4d xformOp:transform
+        matrix4d xformOp:transform:xform1 = ( (0.984807753012208, 0, -0.17364817766693033, 0), (0, 1, 0, 0), (0.17364817766693033, 0, 0.984807753012208, 0), (0, 0, 0, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform", "xformOp:transform:xform1"]
+    }
 }
 
 def Xform "cameras"
@@ -157,7 +166,7 @@ def Xform "cameras"
         double shutter:open = -0.25
         float verticalAperture = 0.196875
         float verticalApertureOffset = 0
-        matrix4d xformOp:transform = ( (0.6427876096865394, 0, -0.766044443118978, 0), (0.09335733330207169, 0.992546151641322, 0.07833610394146276, 0), (0.7603344640039612, -0.12186934340514748, 0.6379963683170988, 0), (365, 43, 355, 1) )
+        matrix4d xformOp:transform = ( (0.6427876096865394, 0, -0.766044443118978, 0), (0.10661278062209463, 0.9902680687415704, 0.08945874489878387, 0), (0.7585893512576422, -0.13917310096006544, 0.6365320448552997, 0), (365, 38, 360, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
     }
 }
