@@ -1,3 +1,4 @@
+*.ini
 assets/images/hdri/studio_white_soft_light_05_raw.exr.tx
 assets/machineFlesh/model/components/tex/1k/png/rough_1012_Raw_ACEScg.png.tx
 assets/machineFlesh/model/components/tex/1k/png/color_1001_raw.png.tx
