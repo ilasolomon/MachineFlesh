@@ -1,0 +1,25 @@
+#usda 1.0
+(
+    defaultPrim = "vol"
+    metersPerUnit = 0.01
+    upAxis = "Y"
+)
+
+def Volume "vol"
+{
+    custom rel field:density = </vol/density>
+
+    def OpenVDBAsset "density"
+    {
+        token fieldName.timeSamples = {
+            1: "density",
+        }
+        asset filePath.timeSamples = {
+            1: @./vol.vdb@,
+        }		
+    }
+	
+	matrix4d xformOp:transform = ( (0.75, 0, 0, 0), (0, 0.2565151074942516, -0.7047694655894312, 0), (0, 0.7047694655894312, 0.2565151074942516, 0), (-37, 300, -70, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+}
+

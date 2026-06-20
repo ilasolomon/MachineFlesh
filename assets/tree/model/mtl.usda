@@ -1,10 +1,10 @@
 #usda 1.0
 (
     defaultPrim = "__root"
-    endTimeCode = 122
+    endTimeCode = 1
     framesPerSecond = 24
     metersPerUnit = 0.01
-    startTimeCode = 122
+    startTimeCode = 1
     timeCodesPerSecond = 24
     upAxis = "Y"
 )
@@ -28,11 +28,9 @@ over "__root"
         }
 
         def Material "trunk_mtlx" (
-            prepend apiSchemas = ["MaterialXConfigAPI"]
             prepend inherits = </__class_mtl__/trunk_mtlx>
         )
         {
-            string config:mtlx:version = "1.39"
             token outputs:mtlx:surface.connect = </__root/mtl/trunk_mtlx/mtlxstandard_surface.outputs:out>
             token outputs:surface.connect = </__root/mtl/trunk_mtlx/mtlxstandard_preview.outputs:surface>
 
@@ -154,11 +152,9 @@ over "__root"
         }
 
         def Material "leaves_a_mtlx" (
-            prepend apiSchemas = ["MaterialXConfigAPI"]
             prepend inherits = </__class_mtl__/leaves_a_mtlx>
         )
         {
-            string config:mtlx:version = "1.39"
             token outputs:mtlx:surface.connect = </__root/mtl/leaves_a_mtlx/mtlxstandard_surface.outputs:out>
             token outputs:surface.connect = </__root/mtl/leaves_a_mtlx/mtlxstandard_preview.outputs:surface>
 
@@ -173,7 +169,6 @@ over "__root"
                         }
                     }
                 )
-                float inputs:base.connect = </__root/mtl/leaves_a_mtlx/mtlxrange2.outputs:out>
                 color3f inputs:base_color = (0.02, 0.151, 0.029) (
                     customData = {
                         dictionary HoudiniPreviewTags = {
@@ -256,7 +251,6 @@ over "__root"
                 )
                 color3f inputs:subsurface_color = (0.11252238, 0.19013268, 0.073097624)
                 color3f inputs:subsurface_radius = (0.11252238, 0.19013268, 0.073097624)
-                float inputs:subsurface_scale = 0.1
                 float inputs:transmission (
                     customData = {
                         dictionary HoudiniPreviewTags = {
@@ -266,22 +260,6 @@ over "__root"
                     }
                 )
                 token outputs:out
-            }
-
-            def Shader "mtlxrange2"
-            {
-                uniform token info:id = "ND_range_float"
-                float inputs:gamma = 0.9
-                float inputs:in.connect = </__root/mtl/leaves_a_mtlx/mtlxfacingratio1.outputs:out>
-                float inputs:outhigh = 0.5
-                float inputs:outlow = 3
-                float outputs:out
-            }
-
-            def Shader "mtlxfacingratio1"
-            {
-                uniform token info:id = "ND_facingratio_float"
-                float outputs:out
             }
 
             def Shader "mtlxstandard_preview" (
@@ -301,11 +279,9 @@ over "__root"
         }
 
         def Material "leaves_b_mtlx" (
-            prepend apiSchemas = ["MaterialXConfigAPI"]
             prepend inherits = </__class_mtl__/leaves_b_mtlx>
         )
         {
-            string config:mtlx:version = "1.39"
             token outputs:mtlx:surface.connect = </__root/mtl/leaves_b_mtlx/mtlxstandard_surface.outputs:out>
             token outputs:surface.connect = </__root/mtl/leaves_b_mtlx/mtlxstandard_preview.outputs:surface>
 
@@ -320,7 +296,6 @@ over "__root"
                         }
                     }
                 )
-                float inputs:base.connect = </__root/mtl/leaves_b_mtlx/mtlxrange2.outputs:out>
                 color3f inputs:base_color = (0.02, 0.497, 0.058) (
                     customData = {
                         dictionary HoudiniPreviewTags = {
@@ -345,7 +320,7 @@ over "__root"
                         }
                     }
                 )
-                float inputs:emission = 0.101 (
+                float inputs:emission = 0.1 (
                     customData = {
                         dictionary HoudiniPreviewTags = {
                             double default_value = 0
@@ -401,9 +376,10 @@ over "__root"
                         }
                     }
                 )
-                color3f inputs:subsurface_color = (0.12298664, 0.46813983, 0.14284623)
-                color3f inputs:subsurface_radius = (0.12298664, 0.46813983, 0.14284623)
-                float inputs:subsurface_scale = 0.1
+                float inputs:subsurface = 1
+                color3f inputs:subsurface_color = (0.13718145, 0.2898998, 0.079982385)
+                color3f inputs:subsurface_radius = (0.14020485, 0.297, 0.085306264)
+                int inputs:thin_walled = 1
                 float inputs:transmission (
                     customData = {
                         dictionary HoudiniPreviewTags = {
@@ -415,21 +391,6 @@ over "__root"
                 token outputs:out
             }
 
-            def Shader "mtlxrange2"
-            {
-                uniform token info:id = "ND_range_float"
-                float inputs:in.connect = </__root/mtl/leaves_b_mtlx/mtlxfacingratio1.outputs:out>
-                float inputs:outhigh = 0.5
-                float inputs:outlow = 2
-                float outputs:out
-            }
-
-            def Shader "mtlxfacingratio1"
-            {
-                uniform token info:id = "ND_facingratio_float"
-                float outputs:out
-            }
-
             def Shader "mtlxstandard_preview" (
                 customData = {
                     bool HoudiniIsAutoCreatedShader = 1
@@ -439,7 +400,7 @@ over "__root"
                 uniform token info:id = "UsdPreviewSurface"
                 float inputs:clearcoatRoughness = 0.1
                 color3f inputs:diffuseColor = (0.02, 0.497, 0.058)
-                color3f inputs:emissiveColor = (0.0027650886, 0.027588945, 0.011364761)
+                color3f inputs:emissiveColor = (0.0027377114, 0.027315786, 0.011252238)
                 float inputs:roughness = 0.7
                 color3f inputs:specularColor = (1, 1, 1)
                 token outputs:surface
@@ -447,11 +408,9 @@ over "__root"
         }
 
         def Material "leaves_c_mtlx" (
-            prepend apiSchemas = ["MaterialXConfigAPI"]
             prepend inherits = </__class_mtl__/leaves_c_mtlx>
         )
         {
-            string config:mtlx:version = "1.39"
             token outputs:mtlx:surface.connect = </__root/mtl/leaves_c_mtlx/mtlxstandard_surface.outputs:out>
             token outputs:surface.connect = </__root/mtl/leaves_c_mtlx/mtlxstandard_preview.outputs:surface>
 
@@ -490,7 +449,7 @@ over "__root"
                         }
                     }
                 )
-                float inputs:emission = 0.101 (
+                float inputs:emission = 0.1 (
                     customData = {
                         dictionary HoudiniPreviewTags = {
                             double default_value = 0
@@ -547,7 +506,6 @@ over "__root"
                     }
                 )
                 float inputs:subsurface = 1
-                float inputs:subsurface.connect = </__root/mtl/leaves_c_mtlx/mtlxrange2.outputs:out>
                 color3f inputs:subsurface_color = (0.47400635, 0.76212496, 0.1316644)
                 color3f inputs:subsurface_radius = (0.47400635, 0.76212496, 0.1316644)
                 int inputs:thin_walled = 1
@@ -563,21 +521,6 @@ over "__root"
                 token outputs:out
             }
 
-            def Shader "mtlxrange2"
-            {
-                uniform token info:id = "ND_range_float"
-                float inputs:gamma = 0.9
-                float inputs:in.connect = </__root/mtl/leaves_c_mtlx/mtlxfacingratio1.outputs:out>
-                float inputs:outlow = 0.25
-                float outputs:out
-            }
-
-            def Shader "mtlxfacingratio1"
-            {
-                uniform token info:id = "ND_facingratio_float"
-                float outputs:out
-            }
-
             def Shader "mtlxstandard_preview" (
                 customData = {
                     bool HoudiniIsAutoCreatedShader = 1
@@ -587,7 +530,7 @@ over "__root"
                 uniform token info:id = "UsdPreviewSurface"
                 float inputs:clearcoatRoughness = 0.1
                 color3f inputs:diffuseColor = (0.477, 0.773, 0.137)
-                color3f inputs:emissiveColor = (0.047874644, 0.07697462, 0.0132981045)
+                color3f inputs:emissiveColor = (0.047400635, 0.076212496, 0.01316644)
                 float inputs:roughness = 0.7
                 color3f inputs:specularColor = (1, 1, 1)
                 token outputs:surface
